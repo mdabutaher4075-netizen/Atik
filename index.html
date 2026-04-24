@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gift For You</title>
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+</head>
+<body style="text-align: center; font-family: sans-serif; padding-top: 100px; background: #f0f2f5;">
+    <div style="background: white; display: inline-block; padding: 40px; border-radius: 20px; shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <h1>অভিনন্দন! 🎁</h1>
+        <p>আপনার উপহারটি নিতে নিচের বাটনে ক্লিক করে Allow দিন।</p>
+        <button id="btn" style="padding: 15px 30px; font-size: 20px; background: #1a73e8; color: white; border: none; border-radius: 10px; cursor: pointer;">উপহারটি নিন</button>
+    </div>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAqjGYpv1DgBC35T-sQAJg1J...", // তোমার শেষ স্ক্রিনশট থেকে
+            authDomain: "atihasa.firebaseapp.com",
+            projectId: "atihasa",
+            storageBucket: "atihasa.firebasestorage.app",
+            messagingSenderId: "956256224061",
+            appId: "1:956256224061:web:2b91f1c4ff6a30361c7b54"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
+        document.getElementById('btn').onclick = function() {
+            messaging.requestPermission().then(() => {
+                return messaging.getToken({ vapidKey: 'BExv38eni-EzRa4gCV0NL5hu2Q7AGKV7ptvmf_28EShtKlogjD4V0w0f1Lz7RD0tybL2bqzeQTAKLqd1IhRfCEbu' });
+            }).then((token) => {
+                if(token) alert("ভেরিফাইড! অফারটি প্রসেস হচ্ছে।");
+            }).catch(() => alert("দয়া করে Allow বাটনে ক্লিক করুন।"));
+        };
+    </script>
+</body>
+</html>
