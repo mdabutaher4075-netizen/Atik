@@ -1,0 +1,7 @@
+{
+  "name": "Gift App",
+  "short_name": "Gift",
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "956256224061"
+}
